@@ -1,0 +1,26 @@
+{
+  "name": "@studio/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=../../.env src/server.ts",
+    "build": "node build.mjs",
+    "migrate": "tsx --env-file-if-exists=../../.env src/migrate-cli.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1138.0",
+    "@fastify/multipart": "10.1.2",
+    "@fastify/static": "10.1.4",
+    "@studio/publisher": "0.1.0",
+    "@studio/runtime": "0.1.0",
+    "@studio/schema": "0.1.0",
+    "fastify": "5.12.5",
+    "pg": "8.23.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/pg": "8.23.1",
+    "tsx": "4.23.15"
+  }
+}

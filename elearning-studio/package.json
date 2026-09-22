@@ -1,0 +1,38 @@
+{
+  "name": "elearning-studio",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Plataforma independiente de autoría e-learning con exportación SCORM 1.2 / 2004.",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "build": "npm run build:runtime && npm run build -w @studio/web && npm run build -w @studio/server",
+    "build:runtime": "npm run build -w @studio/runtime",
+    "dev": "npm run build:runtime && node scripts/dev.mjs",
+    "db:migrate": "npm run migrate -w @studio/server",
+    "start": "node apps/server/dist/server.js",
+    "typecheck": "tsc -p packages/schema && tsc -p packages/runtime && tsc -p packages/publisher && tsc -p apps/server && tsc -p apps/web",
+    "lint": "eslint .",
+    "test": "npm run build:runtime && vitest run",
+    "test:e2e": "npm run build && playwright test",
+    "check": "npm run lint && npm run typecheck && npm run test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.20.4",
+    "esbuild": "0.25.12",
+    "eslint": "^10.11.0",
+    "globals": "16.5.0",
+    "happy-dom": "20.14.5",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.70.1",
+    "vitest": "3.2.7"
+  }
+}

@@ -1,0 +1,267 @@
+/* Runtime Engine — estilos compartidos por editor, preview y SCORM. */
+.rt-stage {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex: none;
+}
+.rt-stage *,
+.rt-stage *::before,
+.rt-stage *::after {
+  box-sizing: border-box;
+}
+.rt-el {
+  position: absolute;
+  margin: 0;
+}
+.rt-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.rt-shape svg {
+  display: block;
+  overflow: visible;
+}
+.rt-shape-text {
+  position: absolute;
+  inset: 0;
+}
+.rt-image {
+  display: block;
+  user-select: none;
+}
+.rt-button {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  border: none;
+  padding: 0 12px;
+}
+.rt-button:focus-visible,
+.rt-btn:focus-visible,
+.rt-menu-item:focus-visible {
+  outline: 3px solid var(--rt-accent, #36b9d6);
+  outline-offset: 2px;
+}
+.rt-media {
+  background: #000;
+}
+audio.rt-media {
+  background: transparent;
+}
+
+/* ---------- Player ---------- */
+.rt-player {
+  --rt-primary: #003a5d;
+  --rt-primary-dark: #002b46;
+  --rt-accent: #36b9d6;
+  --rt-danger: #bd1550;
+  --rt-font: "Montserrat", system-ui, sans-serif;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  min-height: 100%;
+  font-family: var(--rt-font);
+  color: #1d2b36;
+  background: #e8edf1;
+}
+.rt-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--rt-primary);
+  color: #fff;
+}
+.rt-titles {
+  flex: 1;
+  min-width: 0;
+}
+.rt-course-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rt-slide-title {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+.rt-counter {
+  margin: 0;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.rt-viewport {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+  padding: 8px;
+}
+.rt-stage-host {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.15);
+  outline: none;
+}
+.rt-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  background: #fff;
+  border-top: 1px solid #d5dde3;
+}
+.rt-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  min-height: 40px;
+  border-radius: 6px;
+  border: 1px solid var(--rt-primary);
+  background: #fff;
+  color: var(--rt-primary);
+  cursor: pointer;
+}
+.rt-header .rt-btn {
+  background: transparent;
+  color: #fff;
+  border-color: rgb(255 255 255 / 0.6);
+}
+.rt-btn-primary,
+.rt-next {
+  background: var(--rt-primary);
+  color: #fff;
+}
+.rt-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.rt-progress {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #d5dde3;
+  overflow: hidden;
+}
+.rt-progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--rt-accent);
+  transition: width 0.3s ease;
+}
+.rt-menu {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  bottom: 0;
+  width: min(320px, 90%);
+  z-index: 20;
+  overflow: auto;
+  background: #fff;
+  box-shadow: 4px 0 16px rgb(0 0 0 / 0.2);
+  padding: 12px;
+}
+.rt-menu[hidden] {
+  display: none;
+}
+.rt-menu-list,
+.rt-menu-list ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rt-menu-module {
+  display: block;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--rt-primary);
+  margin: 12px 0 4px;
+}
+.rt-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.rt-menu-item:hover:not(:disabled) {
+  background: #eef3f6;
+}
+.rt-menu-item[aria-current="page"] {
+  background: var(--rt-primary);
+  color: #fff;
+}
+.rt-menu-item.rt-visited::after {
+  content: " ✓";
+}
+.rt-menu-item:disabled {
+  color: #8a98a3;
+  cursor: not-allowed;
+}
+.rt-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 20 35 / 0.55);
+}
+.rt-dialog {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.3);
+}
+.rt-dialog h2 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--rt-primary);
+}
+.rt-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.rt-fatal {
+  margin: 24px;
+  padding: 16px;
+  border-left: 4px solid var(--rt-danger, #bd1550);
+  background: #fff;
+  font-family: system-ui, sans-serif;
+}
+.rt-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rt-progress-bar {
+    transition: none;
+  }
+}

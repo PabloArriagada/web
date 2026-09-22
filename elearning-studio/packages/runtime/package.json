@@ -1,0 +1,19 @@
+{
+  "name": "@studio/runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./mock-lms": "./src/lms/mock-api.ts",
+    "./runtime.css": "./src/runtime.css",
+    "./bundle": "./dist/bundle-info.json",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@studio/schema": "0.1.0"
+  }
+}
