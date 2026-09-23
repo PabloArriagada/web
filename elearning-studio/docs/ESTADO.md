@@ -23,7 +23,7 @@ acceso a imágenes. Es el primer paso del próximo incremento.
 
 ## Terminado en esta entrega
 
-- **Fase 0**: la auditoría del HTML **no se pudo hacer** porque el archivo no se entregó (ver `docs/AUDITORIA.md`). La arquitectura quedó definida (`docs/ARQUITECTURA.md`).
+- **Fase 0**: auditoría del prototipo ejecutada y reproducible (`npm run audit:prototype`); informe en `docs/AUDITORIA.md`. Arquitectura en `docs/ARQUITECTURA.md`.
 - Monorepo TypeScript estricto: `schema`, `runtime`, `publisher`, `server` y `web`.
 - Modelo tipado con zod, ids estables, factorías, validación semántica y migraciones de esquema con prueba de encadenamiento.
 - Migración SQL inicial con proyectos, versiones, assets, publicaciones y trabajos.
@@ -42,7 +42,7 @@ acceso a imágenes. Es el primer paso del próximo incremento.
 
 | Tema | Estado | Nota |
 |---|---|---|
-| Auditoría del HTML adjunto | ⛔ | Falta el archivo |
+| Importador del `.course.json` del prototipo | ⛔ | Propuesto al inicio de la Fase 2 para no perder cursos ya creados |
 | Prueba en **Moodle real** | ⛔ | Siguiente incremento (Docker con Moodle + MariaDB) |
 | Driver **S3/MinIO** | 🟡 | Implementado con `@aws-sdk/client-s3`; **no probado** aquí (sin Docker). Las pruebas usan el driver `fs` |
 | XSD oficiales de ADL en el paquete | ⛔ | El manifest no declara `schemaLocation`; falta validar contra XSD |

@@ -1,0 +1,132 @@
+[
+  {
+    "step": "1 Crear módulo",
+    "status": "Funciona",
+    "detail": "módulos=2; ids con Date.now+random: module_mue4p3o5niw8i, module_mue4p3qgm34ba. No se puede renombrar, reordenar ni eliminar módulos (no hay controles)."
+  },
+  {
+    "step": "2 Crear pantalla",
+    "status": "Funciona parcialmente",
+    "detail": "pantallas módulo 1=2. Sin eliminar, renombrar desde la lista ni reordenar pantallas (solo título en propiedades)."
+  },
+  {
+    "step": "3 Insertar texto",
+    "status": "Funciona parcialmente",
+    "detail": "texto en lienzo=\"abcde\"; tras 1 deshacer=\"abcd\" → cada tecla crea un snapshot completo del proyecto en el historial. Sin control de alineación ni interlineado en la UI; la edición directa es un prompt() del navegador (doble clic)."
+  },
+  {
+    "step": "4 Insertar forma",
+    "status": "Funciona parcialmente",
+    "detail": "se inserta un rectángulo redondeado; controles <select> en propiedades de la forma=0: no hay forma de elegir círculo/triángulo aunque el código los contempla. Formas hechas con CSS (triángulo con clip-path recorta el borde)."
+  },
+  {
+    "step": "5 Subir imagen",
+    "status": "Riesgo técnico",
+    "detail": "src=\"data:image/png;base64,iVBORw0K…\" (1998 caracteres): la imagen se guarda como Data URL Base64 dentro del proyecto, del historial de deshacer y de localStorage. ALT por defecto = nombre del archivo."
+  },
+  {
+    "step": "6 Subir video pequeño",
+    "status": "Riesgo técnico",
+    "detail": "video de 50229 B → Data URL de 66995 caracteres (+33 % por Base64). Tamaño del proyecto en localStorage: 70633 caracteres. Sin subtítulos, poster ni opciones de reproducción."
+  },
+  {
+    "step": "7 Mover",
+    "status": "Funciona parcialmente",
+    "detail": "lienzo visible 834px de ancho (coordenadas lógicas 960). Cursor movido 100px → modelo +115, objeto en pantalla +115px. El lienzo no se escala (sin transform) pero el arrastre divide por la escala: el objeto no sigue al cursor y queda recortado cuando el lienzo mide menos de 960px."
+  },
+  {
+    "step": "8 Redimensionar",
+    "status": "Funciona parcialmente",
+    "detail": "cursor +50px → ancho modelo 300→358, ancho en pantalla 358px. Solo un tirador (esquina inferior derecha), sin mantener proporción, sin rotación con el mouse, sin snap ni guías."
+  },
+  {
+    "step": "9 Copiar / pegar",
+    "status": "Funciona",
+    "detail": "pegar en la misma pantalla 4→5; en otra pantalla 0→1. Portapapeles solo interno (no entre pestañas)."
+  },
+  {
+    "step": "10 Duplicar",
+    "status": "Funciona",
+    "detail": "Ctrl+D 5→6. Duplicar pantalla también disponible (⧉)."
+  },
+  {
+    "step": "11 Eliminar",
+    "status": "Funciona",
+    "detail": "Supr 6→5. No se pueden eliminar pantallas ni módulos."
+  },
+  {
+    "step": "12 Deshacer / rehacer",
+    "status": "Funciona parcialmente",
+    "detail": "deshacer 5→6, rehacer →5. Cada snapshot clona el proyecto completo (incluidos los Base64) hasta 80 veces; un clic simple en un objeto también genera snapshot. Ctrl+Z dentro de un campo de texto deshace el proyecto, no el texto."
+  },
+  {
+    "step": "13 Guardar",
+    "status": "Funciona parcialmente",
+    "detail": "guarda en localStorage (71442 caracteres). El autosave muestra un toast \"Proyecto guardado en este navegador\" tras cada cambio. Sin versiones ni servidor."
+  },
+  {
+    "step": "14 Recargar navegador",
+    "status": "Funciona",
+    "detail": "antes: 2 módulos/6 objetos; después: 2/6."
+  },
+  {
+    "step": "15 Exportar proyecto",
+    "status": "Funciona",
+    "detail": "rso-sin-ti-tlo.course.json (73618 caracteres, contiene Data URLs: true)."
+  },
+  {
+    "step": "16 Reabrir proyecto",
+    "status": "Funciona parcialmente",
+    "detail": "lienzo vacío tras limpiar=0 objetos; reabierto=6 objetos. Validación mínima (solo exige modules y schemaVersion): un JSON con estructura distinta rompe el render."
+  },
+  {
+    "step": "16b Importar JSON malformado",
+    "status": "Riesgo técnico",
+    "detail": "aviso: \"No se pudo abrir: Cannot read properties of undefined (reading 'length')\". Pero el estado en memoria ya fue reemplazado antes de fallar: al usar el editor después → errores no controlados: pageerror: Cannot read properties of undefined (reading 'reduce'). El proyecto anterior sigue en localStorage=true solo porque el guardado no llegó a ejecutarse."
+  },
+  {
+    "step": "17 Previsualizar",
+    "status": "Requiere rediseño",
+    "detail": "el preview usa un segundo motor (runtimeJs) distinto del editor. Subrayado: editor=\"underline\", preview (ambas copias del texto)=\"none/none\". Radio de forma redondeada: editor=20px, preview=12px. El preview no aplica text-align ni justify-content, ni clip-path del triángulo. iframe srcdoc sandbox=ninguno (mismo origen que el editor). El preview siempre abre en la pantalla 1 (mostraba: \"Texto auditoría\"), no en la que se está editando."
+  },
+  {
+    "step": "18 Validar",
+    "status": "Funciona parcialmente",
+    "detail": "informe: \"✓ No se detectaron errores bloqueantes en el proyecto.\". Revisa nombre, módulos vacíos, media sin src, ALT y tamaños. No revisa rutas, tamaño del proyecto, SCORM, contraste ni enlaces."
+  },
+  {
+    "step": "19 Exportar SCORM",
+    "status": "Requiere rediseño",
+    "detail": "sin Internet: \"No se pudo cargar JSZip. Conecta internet o instala JSZip localmente.\". Con JSZip: archivos=assets/images/el_mue4p43t0cibd.png, assets/video/el_mue4p45ec5xpp.webm, course-data/course.js, course-data/course.json, course-data/project-manifest.json, imsmanifest.xml, index.html, runtime/runtime.js, styles/runtime.css. imsmanifest en raíz=true. Archivos declarados en el manifest: index.html (faltan runtime, estilos, datos y assets). 1.2 sin <metadata>/<schemaversion>: true. 2004 declara schemaversion: true. project-manifest.json idéntico a course.json: true. Identificadores del manifest fijos ('ORG','ITEM','RES')."
+  },
+  {
+    "step": "20 SCORM scorm12 en LMS simulado",
+    "status": "No funciona",
+    "detail": "llamadas a la API SCORM=0; estado final=not attempted; imágenes cargadas=true; errores=ninguno. El runtime nunca busca window.API/API_1484_11: sin Initialize, completitud, ubicación, suspend_data, puntaje ni Terminate. El LMS lo verá como no iniciado/incompleto y no hay reanudación."
+  },
+  {
+    "step": "20 SCORM scorm2004 en LMS simulado",
+    "status": "No funciona",
+    "detail": "llamadas a la API SCORM=0; estado final=unknown; imágenes cargadas=true; errores=ninguno. El runtime nunca busca window.API/API_1484_11: sin Initialize, completitud, ubicación, suspend_data, puntaje ni Terminate. El LMS lo verá como no iniciado/incompleto y no hay reanudación."
+  },
+  {
+    "step": "21 Límite de localStorage",
+    "status": "Riesgo técnico",
+    "detail": "video de 6 MB → estado \"Error al guardar\"; tras recargar, ¿se conservó el video?=false. Lo no guardado se pierde al recargar."
+  },
+  {
+    "step": "22 Pegar imagen del portapapeles",
+    "status": "No funciona",
+    "detail": "con el foco en el lienzo: imágenes 1→1; con el foco en el campo del título: →2. El atajo Ctrl+V hace preventDefault en keydown, lo que cancela el evento paste; solo funciona por accidente desde un campo de texto."
+  },
+  {
+    "step": "Extra · Pestaña Capas",
+    "status": "No funciona",
+    "detail": "al pulsar \"Capas\" la clase queda \"tab\" y el panel no cambia: botón decorativo. Tampoco tienen efecto \"Duración (s)\", \"Color principal\" ni \"Aprobación (%)\" (no se usan en el runtime); el quiz no permite marcar la respuesta correcta (siempre la A) y no envía puntaje."
+  },
+  {
+    "step": "Consola del editor",
+    "status": "Funciona",
+    "detail": "sin errores de JavaScript en el uso normal (solo los provocados a propósito en 16b y el bloqueo del CDN en 19)"
+  }
+]
